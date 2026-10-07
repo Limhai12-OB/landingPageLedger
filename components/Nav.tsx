@@ -16,10 +16,10 @@ export default function Nav() {
           ))}
         </nav>
         <div className={s.navActions}>
-          <a href="#pricing" className={s.navLogin}>
+          <a href="/login" className={s.navLogin}>
             Login
           </a>
-          <a href="#pricing" className={`${s.btn} ${s.btnDark} ${s.btnSm}`}>
+          <a href="/register" className={`${s.btn} ${s.btnDark} ${s.btnSm}`}>
             Get Started
           </a>
         </div>

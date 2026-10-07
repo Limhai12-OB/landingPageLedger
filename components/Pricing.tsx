@@ -44,7 +44,7 @@ export default function Pricing() {
                   </li>
                 ))}
               </ul>
-              <a href="#top" className={`${s.btn} ${s.btnBlock} ${p.featured ? s.btnAccent : s.btnDark}`}>
+              <a href={p.featured ? "/register" : "/login"} className={`${s.btn} ${s.btnBlock} ${p.featured ? s.btnAccent : s.btnDark}`}>
                 {p.cta} <Icon name="arrowRight" size={15} />
               </a>
             </article>

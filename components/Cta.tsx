@@ -48,7 +48,7 @@ export default function Cta() {
           one place.
         </p>
         <div className={s.heroActions} data-reveal="" style={delay(2)}>
-          <a href="#pricing" className={`${s.btn} ${s.btnDark}`}>
+          <a href="/register" className={`${s.btn} ${s.btnDark}`}>
             Get Started <Icon name="arrowRight" size={15} />
           </a>
           <a href="#features" className={`${s.btn} ${s.btnLight}`}>

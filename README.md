@@ -42,6 +42,26 @@ data/
   content.ts          brand name, nav, integrations, features, roles, quotes, guides, stats, footer
 ```
 
+### Auth pages
+
+| Route | What it does |
+|---|---|
+| `/login` | Email + password (show/hide), remember me, Google, links to register / forgot password |
+| `/register` | Business Owner sign-up: name, email, password + confirm with strength meter, terms |
+| `/forgot-password` | Email → sends a code, then goes to `/verify-code?email=…` |
+| `/verify-code` | 6-digit code (auto-advance, paste, resend timer) → set new password → done |
+
+```
+app/auth.module.css        auth styling (same brand tokens as the landing page)
+app/{login,register,forgot-password,verify-code}/page.tsx
+components/auth/           AuthShell (split layout), AuthPanel (dashboard preview), Fields, *Form.tsx
+lib/auth.ts                PLACEHOLDER auth calls — replace with your real API
+```
+
+`lib/auth.ts` only simulates latency. For demos: `taken@example.com` shows "already registered" on sign-up,
+and the code `000000` is rejected on verify. After sign-in and sign-up there is no redirect yet
+(TODO comments mark where the dashboard and Business Setup pages go).
+
 Most copy lives in `data/content.ts`. Widget and phone-screen text is in the components.
 
 Animation: add `data-reveal` (optionally `="left" | "right" | "scale"`) plus `style={delay(i)}` to any element

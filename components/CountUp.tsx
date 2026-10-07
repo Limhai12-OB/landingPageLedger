@@ -2,7 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 
-/** Counts a value like "14.5K" or "350+" up from zero when it scrolls into view. */
+/**
+ * Counts a value like "14.5K" or "350+" up from zero each time it scrolls into view,
+ * and resets once it has fully left the viewport.
+ */
 export default function CountUp({ value, duration = 1400 }: { value: string; duration?: number }) {
   const ref = useRef<HTMLSpanElement>(null);
   const [text, setText] = useState(value);
@@ -14,21 +17,31 @@ export default function CountUp({ value, duration = 1400 }: { value: string; dur
     const target = parseFloat(m[1]);
     const decimals = (m[1].split(".")[1] ?? "").length;
     const suffix = m[2];
-    setText(`${(0).toFixed(decimals)}${suffix}`);
+    const format = (n: number) => `${n.toFixed(decimals)}${suffix}`;
+    setText(format(0));
 
     let raf = 0;
-    const io = new IntersectionObserver(([e]) => {
-      if (!e.isIntersecting) return;
-      io.disconnect();
-      const start = performance.now();
-      const tick = (now: number) => {
-        const t = Math.min(1, (now - start) / duration);
-        const eased = 1 - Math.pow(1 - t, 3);
-        setText(`${(target * eased).toFixed(decimals)}${suffix}`);
-        if (t < 1) raf = requestAnimationFrame(tick);
-      };
-      raf = requestAnimationFrame(tick);
-    }, { threshold: 0.4 });
+    let running = false; // true from the moment a count starts until the element fully leaves
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (!e.isIntersecting) {
+          cancelAnimationFrame(raf);
+          running = false;
+          setText(format(0));
+          return;
+        }
+        if (running || e.intersectionRatio < 0.4) return;
+        running = true;
+        const start = performance.now();
+        const tick = (now: number) => {
+          const t = Math.min(1, (now - start) / duration);
+          setText(format(target * (1 - Math.pow(1 - t, 3))));
+          if (t < 1) raf = requestAnimationFrame(tick);
+        };
+        raf = requestAnimationFrame(tick);
+      },
+      { threshold: [0, 0.4] },
+    );
     io.observe(el);
     return () => {
       io.disconnect();
