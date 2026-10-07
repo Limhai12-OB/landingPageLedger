@@ -59,8 +59,28 @@ lib/auth.ts                PLACEHOLDER auth calls — replace with your real API
 ```
 
 `lib/auth.ts` only simulates latency. For demos: `taken@example.com` shows "already registered" on sign-up,
-and the code `000000` is rejected on verify. After sign-in and sign-up there is no redirect yet
-(TODO comments mark where the dashboard and Business Setup pages go).
+and the code `000000` is rejected on verify. Sign-in (email or Google) redirects to `/dashboard`.
+After sign-up there is no redirect yet (a TODO marks where the Business Setup page goes).
+
+### Dashboard
+
+| Route | What it does |
+|---|---|
+| `/dashboard` | Business Owner overview: KPIs, 90-day cash forecast, health score, alerts, transactions, AI advisor, expenses, branches, monthly report |
+| `/dashboard/{transactions,import,sales,reconcile,forecast,branches,advisor,settings}` | Placeholder section pages so every sidebar link resolves |
+
+```
+app/dashboard.module.css          dashboard styling (same brand tokens as the landing and auth pages)
+app/dashboard/layout.tsx          wraps pages in the app shell
+app/dashboard/page.tsx            overview
+app/dashboard/[section]/page.tsx  placeholder for the other sections (list in components/dashboard/nav.ts)
+components/dashboard/             Shell (sidebar + top bar), Kpis, ForecastChart, HealthScore, Alerts,
+                                  Transactions, Advisor, Expenses, Branches, Report
+data/dashboard.ts                 PLACEHOLDER numbers, transactions, branches, alerts — replace with your API
+```
+
+The sidebar collapses to a drawer under 900px. The branch switcher and EN/ខ្មែរ toggle in the top bar are
+UI only (no filtering or translation yet).
 
 Most copy lives in `data/content.ts`. Widget and phone-screen text is in the components.
 

@@ -8,9 +8,15 @@ export type AuthResult = { ok: true } | { ok: false; error: string };
 
 const wait = (ms = 900) => new Promise((r) => setTimeout(r, ms));
 
+/** DEMO account — the only credentials sign-in accepts until a real auth API is wired up. */
+export const DEMO_ACCOUNT = { email: "owner@sokhamart.com", password: "demo1234" } as const;
+
 export async function signIn(email: string, password: string, remember: boolean): Promise<AuthResult> {
-  void email; void password; void remember;
+  void remember;
   await wait();
+  if (email.trim().toLowerCase() !== DEMO_ACCOUNT.email || password !== DEMO_ACCOUNT.password) {
+    return { ok: false, error: "Wrong email or password. Use the demo account shown below." };
+  }
   return { ok: true };
 }
 

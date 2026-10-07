@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Inter_Tight } from "next/font/google";
+import { Poppins } from "next/font/google";
 import { BRAND } from "@/data/content";
 import "./globals.css";
 
-const font = Inter_Tight({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-sans" });
+const font = Poppins({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
   title: `${BRAND} — Bookkeeping, cash and planning for Cambodian retail`,

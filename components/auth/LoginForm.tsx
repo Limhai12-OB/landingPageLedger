@@ -1,12 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import s from "@/app/auth.module.css";
-import { isEmail, signIn, signInWithGoogle } from "@/lib/auth";
+import { DEMO_ACCOUNT, isEmail, signIn, signInWithGoogle } from "@/lib/auth";
 import { Alert, Checkbox, Divider, GoogleButton, PasswordField, SubmitButton, TextField } from "./Fields";
 
 export default function LoginForm() {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [remember, setRemember] = useState(false);
@@ -26,16 +28,26 @@ export default function LoginForm() {
 
     setLoading(true);
     const res = await signIn(email, password, remember);
-    setLoading(false);
-    // TODO: redirect to the dashboard once it exists.
-    setStatus(res.ok ? { tone: "success", text: "You're signed in. Taking you to your dashboard…" } : { tone: "error", text: res.error });
+    if (!res.ok) {
+      setLoading(false);
+      setStatus({ tone: "error", text: res.error });
+      return;
+    }
+    // Keep the button in its loading state while the dashboard loads.
+    setStatus({ tone: "success", text: "You're signed in. Taking you to your dashboard…" });
+    router.push("/dashboard");
   }
 
   async function onGoogle() {
     setGoogleLoading(true);
     const res = await signInWithGoogle();
-    setGoogleLoading(false);
-    setStatus(res.ok ? { tone: "success", text: "Signed in with Google." } : { tone: "error", text: res.error });
+    if (!res.ok) {
+      setGoogleLoading(false);
+      setStatus({ tone: "error", text: res.error });
+      return;
+    }
+    setStatus({ tone: "success", text: "Signed in with Google. Taking you to your dashboard…" });
+    router.push("/dashboard");
   }
 
   return (
@@ -75,6 +87,29 @@ export default function LoginForm() {
       </div>
 
       <SubmitButton loading={loading}>Log In</SubmitButton>
+
+      {/* DEMO: shown until a real auth API replaces lib/auth.ts */}
+      <div className={s.demo} role="note">
+        <div>
+          <b>Demo account</b>
+          <span>
+            Email: <code>{DEMO_ACCOUNT.email}</code> · Password: <code>{DEMO_ACCOUNT.password}</code>
+          </span>
+        </div>
+        <button
+          type="button"
+          className={s.textBtn}
+          onClick={() => {
+            setEmail(DEMO_ACCOUNT.email);
+            setPassword(DEMO_ACCOUNT.password);
+            setErrors({});
+            setStatus(null);
+          }}
+        >
+          Fill in
+        </button>
+      </div>
+
       <Divider>Or log in with</Divider>
       <GoogleButton onClick={onGoogle} loading={googleLoading} />
 

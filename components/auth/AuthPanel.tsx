@@ -7,9 +7,9 @@ const rows = [
 ];
 
 const categories = [
-  ["Inventory restock", "$1,420", "#2913fa"],
-  ["Rent & utilities", "$980", "#8c89fd"],
-  ["Wages", "$640", "#b7b6fe"],
+  ["Inventory restock", "$1,420", "#1d33ba"],
+  ["Rent & utilities", "$980", "#8e9cf0"],
+  ["Wages", "$640", "#c7d0fb"],
 ] as const;
 
 /** Right-hand promo panel with a dashboard preview (decorative). */

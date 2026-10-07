@@ -50,10 +50,10 @@ function BalanceWidget() {
       <b className={s.wBig}>$48,500</b>
       <div className={s.legend}>
         <span>
-          <i style={{ background: "#2913fa" }} /> Actual
+          <i style={{ background: "#1d33ba" }} /> Actual
         </span>
         <span>
-          <i style={{ background: "#b7b6fe" }} /> Last year
+          <i style={{ background: "#c7d0fb" }} /> Last year
         </span>
       </div>
       <div className={s.wChart}>

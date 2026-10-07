@@ -19,22 +19,22 @@ export default function LineChart({ marker = 8, tip }: { marker?: number; tip?: 
     <svg viewBox={`0 -14 ${w} 140`} width="100%" aria-hidden="true" className={s.lineChart}>
       <defs>
         <linearGradient id={id} x1="0" x2="0" y1="0" y2="1">
-          <stop offset="0" stopColor="#5f59fc" stopOpacity=".2" />
-          <stop offset="1" stopColor="#5f59fc" stopOpacity="0" />
+          <stop offset="0" stopColor="#4c62dc" stopOpacity=".2" />
+          <stop offset="1" stopColor="#4c62dc" stopOpacity="0" />
         </linearGradient>
       </defs>
       {[30, 60, 90].map((gy) => (
-        <line key={gy} x1="0" x2={w} y1={gy} y2={gy} stroke="#ececea" strokeDasharray="2 4" />
+        <line key={gy} x1="0" x2={w} y1={gy} y2={gy} stroke="#e5e7eb" strokeDasharray="2 4" />
       ))}
       <path className={s.lcArea} d={`${path(income, w)} L${w} 120 L0 120 Z`} fill={`url(#${id})`} />
-      <path className={s.lcLine} pathLength={1} d={path(previous, w)} fill="none" stroke="#b7b6fe" strokeWidth="1.6" />
-      <path className={s.lcLine} pathLength={1} d={path(income, w)} fill="none" stroke="#2913fa" strokeWidth="2.2" strokeLinejoin="round" strokeLinecap="round" />
+      <path className={s.lcLine} pathLength={1} d={path(previous, w)} fill="none" stroke="#c7d0fb" strokeWidth="1.6" />
+      <path className={s.lcLine} pathLength={1} d={path(income, w)} fill="none" stroke="#1d33ba" strokeWidth="2.2" strokeLinejoin="round" strokeLinecap="round" />
       <g className={s.lcMarker}>
-        <line x1={x} x2={x} y1={y} y2="120" stroke="#2913fa" strokeDasharray="3 3" />
-        <circle cx={x} cy={y} r="4.5" fill="#fff" stroke="#2913fa" strokeWidth="2" />
+        <line x1={x} x2={x} y1={y} y2="120" stroke="#1d33ba" strokeDasharray="3 3" />
+        <circle cx={x} cy={y} r="4.5" fill="#fff" stroke="#1d33ba" strokeWidth="2" />
         {tip && (
           <g transform={`translate(${x} ${y - 14})`}>
-            <rect x="-30" y="-15" width="60" height="19" rx="6" fill="#05014b" />
+            <rect x="-30" y="-15" width="60" height="19" rx="6" fill="#4c62dc" />
             <text x="0" y="-2" textAnchor="middle" fontSize="9.5" fill="#fff" fontWeight="600">
               {tip}
             </text>

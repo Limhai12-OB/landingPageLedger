@@ -195,6 +195,24 @@ const glyphs = {
       <path d="M15.5 12v1.5a2.5 2.5 0 0 0 5 0V12a8.5 8.5 0 1 0-3.4 6.8" />
     </>
   ),
+  plus: <path d="M12 5v14M5 12h14" />,
+  chevronDown: <path d="m6 9 6 6 6-6" />,
+  download: <path d="M12 4v11m-5-4 5 5 5-5M4.5 19.5h15" />,
+  upload: <path d="M12 15V4m-5 4 5-5 5 5M4.5 19.5h15" />,
+  logOut: <path d="M10 4.5H6.5A2.5 2.5 0 0 0 4 7v10a2.5 2.5 0 0 0 2.5 2.5H10M15 8l4 4-4 4M19 12H9" />,
+  alert: (
+    <>
+      <path d="M12 4 2.8 19.5h18.4z" />
+      <path d="M12 10v4M12 16.8v.2" />
+    </>
+  ),
+  filter: <path d="M4 6h16l-6.5 7.5V19l-3-1.5v-4z" />,
+  scale: (
+    <>
+      <path d="M12 4v16M5 20h14M4 9l8-2.5L20 9" />
+      <path d="M2.5 14.5 6 9l3.5 5.5a3.5 3.5 0 0 1-7 0zM14.5 14.5 18 9l3.5 5.5a3.5 3.5 0 0 1-7 0z" />
+    </>
+  ),
 } as const;
 
 export type IconName = keyof typeof glyphs;
