@@ -1,4 +1,4 @@
-/* landing-page-v2 — scoped styles.
+/* Landing page — scoped styles.
    Order: tokens → motion → shared → sections (top to bottom) → responsive → reduced motion. */
 
 .page {
@@ -24,7 +24,7 @@
 
   background: #fff;
   color: var(--ink);
-  font-family: var(--font-v2), Inter, system-ui, sans-serif;
+  font-family: var(--font-sans), Inter, system-ui, sans-serif;
   letter-spacing: -0.01em;
   overflow-x: clip;
 }

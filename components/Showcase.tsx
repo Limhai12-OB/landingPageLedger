@@ -1,11 +1,11 @@
-import s from "@/app/v2/v2.module.css";
+import s from "@/app/landing.module.css";
 import Phone from "./Phone";
 import SectionHead from "./SectionHead";
 
 export default function Showcase() {
   return (
     <section className={`${s.section} ${s.container}`} aria-labelledby="app-title">
-      <SectionHead id="app-title" badge="Mobile app" title="Your whole business" muted="right in your pocket" />
+      <SectionHead id="app-title" badge="Mobile app" title="Snap, ask and check" muted="right from the shop floor" />
       <div className={s.showcase}>
         <div className={s.sideWrap} data-reveal="right">
           <Phone screen="balance" size={0.84} className={s.sidePhone} />

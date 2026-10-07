@@ -1,4 +1,4 @@
-import s from "@/app/v2/v2.module.css";
+import s from "@/app/landing.module.css";
 import Icon, { type IconName } from "@/components/Icon";
 import LineChart from "./LineChart";
 import Orb from "./Orb";
@@ -6,10 +6,10 @@ import Orb from "./Orb";
 export type Screen = "overview" | "balance" | "assistant";
 
 const activity: { name: string; when: string; amount: string; up: boolean; icon: IconName; bg: string }[] = [
-  { name: "Online store sale", when: "Today, 10:24", amount: "+$1,240", up: true, icon: "bag", bg: "#05014b" },
-  { name: "Coffee supplies", when: "Today, 08:10", amount: "-$86", up: false, icon: "coffee", bg: "#8c89fd" },
-  { name: "Client invoice #208", when: "Yesterday", amount: "+$3,500", up: true, icon: "wallet", bg: "#2913fa" },
-  { name: "Team subscription", when: "Mon, 14:02", amount: "-$240", up: false, icon: "users", bg: "#8a8f98" },
+  { name: "ABA payment · INV-208", when: "Today, 10:24", amount: "+$1,240", up: true, icon: "bag", bg: "#05014b" },
+  { name: "Supplier bill · Rice", when: "Today, 08:10", amount: "-៛344K", up: false, icon: "coffee", bg: "#8c89fd" },
+  { name: "Shopify orders", when: "Yesterday", amount: "+$3,500", up: true, icon: "wallet", bg: "#2913fa" },
+  { name: "Shop rent", when: "Mon, 14:02", amount: "-$240", up: false, icon: "users", bg: "#8a8f98" },
 ];
 
 /** Segmented progress bar: `filled` of `total` segments, fading from brand blue to grey. Fills in when revealed. */
@@ -35,14 +35,14 @@ function Overview() {
         <span className={s.scAvatar}>A</span>
       </div>
       <div className={s.scHead}>
-        <small>Total revenue</small>
+        <small>Monthly revenue</small>
         <b>$48,920</b>
         <em>▲ 12.5% vs last month</em>
       </div>
       <div className={s.scCard}>
         <div className={s.scRow}>
           <span>
-            <b>Progress 68%</b> of $72,000
+            <b>Health score 78</b> of 100
           </span>
           <Icon name="arrowUpRight" size={11} />
         </div>
@@ -50,7 +50,7 @@ function Overview() {
       </div>
       <div className={s.scList}>
         <div className={s.scRow}>
-          <b>Recent activity</b>
+          <b>Recent transactions</b>
           <small>See all</small>
         </div>
         {activity.map((a) => (
@@ -76,13 +76,13 @@ function Balance() {
     <>
       <div className={s.scTop}>
         <Icon name="arrowLeft" size={14} />
-        <small>Balance</small>
+        <small>Cash forecast</small>
         <Icon name="share" size={13} />
       </div>
       <div className={s.scHead}>
-        <small>Total balance</small>
-        <b>$48,500</b>
-        <em>▲ 8.2% this quarter</em>
+        <small>Cash runway</small>
+        <b>74 days</b>
+        <em>Expected line · next 90 days</em>
       </div>
       <div className={s.scChart}>
         <LineChart marker={8} tip="$32,410" />
@@ -92,16 +92,16 @@ function Balance() {
       </div>
       <div className={s.scTiles}>
         <div>
-          <small>Income</small>
+          <small>Inflows</small>
           <b>$62,180</b>
         </div>
         <div>
-          <small>Expenses</small>
+          <small>Outflows</small>
           <b>$13,680</b>
         </div>
       </div>
       <div className={s.scBars}>
-        {[["Sales", 82], ["Services", 54], ["Other", 26]].map(([k, v]) => (
+        {[["POS sales", 82], ["Invoices", 54], ["Other", 26]].map(([k, v]) => (
           <div key={k}>
             <span>{k}</span>
             <i style={{ "--w": `${v}%` } as React.CSSProperties} />
@@ -118,21 +118,21 @@ function Assistant() {
     <>
       <div className={s.scTop}>
         <Icon name="arrowLeft" size={14} />
-        <small>AI insight</small>
+        <small>AI advisor</small>
         <span />
       </div>
       <p className={s.scAi}>
-        Revenue grew 18% this quarter. If these continue to rise over the course of a year, it will outpace your
-        forecast by $9,200.
+        Sales were 9% higher this week than last, led by drinks and snacks. Your cash stays above the safety level
+        for the next 60 days.
       </p>
       <div className={s.scChips}>
-        <span>Why did sales grow?</span>
-        <span>Forecast next month</span>
-        <span>Top customers</span>
+        <span>Why did costs rise?</span>
+        <span>Cash next month?</span>
+        <span>Top selling items</span>
       </div>
       <div className={s.scOrb}>
         <Orb size={58} />
-        <small>Tap to ask your AI assistant</small>
+        <small>Ask in Khmer or English</small>
       </div>
     </>
   );

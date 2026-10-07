@@ -1,6 +1,6 @@
-import s from "@/app/v2/v2.module.css";
+import s from "@/app/landing.module.css";
 import Icon from "@/components/Icon";
-import { plans } from "@/data/v2";
+import { plans } from "@/data/content";
 import { delay } from "./motion";
 
 export default function Pricing() {
@@ -9,14 +9,14 @@ export default function Pricing() {
       <div className={`${s.section} ${s.container}`}>
         <div className={s.pricingHead}>
           <span className={s.badge} data-reveal="">
-            <i /> Pricing
+            <i /> Roles
           </span>
           <h2 id="pricing-title" className={s.pricingTitle} data-reveal="" style={delay(1)}>
-            Start for free and upgrade as your business scales. No{" "}
+            One business, many branches. Everyone sees{" "}
             <span className={s.inlineChip} aria-hidden="true">
-              <Icon name="wallet" size={18} />
+              <Icon name="users" size={18} />
             </span>{" "}
-            hidden fees, <span className={s.mutedText}>no complicated setup, just clear value from day one</span>
+            exactly their part, <span className={s.mutedText}>with every record kept separate per branch</span>
           </h2>
         </div>
 
@@ -27,7 +27,7 @@ export default function Pricing() {
                 <span className={s.planIcon}>
                   <Icon name={p.icon} size={18} />
                 </span>
-                {p.featured && <span className={s.popular}>Most popular</span>}
+                {p.featured && <span className={s.popular}>Full access</span>}
               </div>
               <h3>{p.name}</h3>
               <p className={s.price}>

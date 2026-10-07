@@ -1,4 +1,4 @@
-import s from "@/app/v2/v2.module.css";
+import s from "@/app/landing.module.css";
 
 /**
  * Illustrated cover for an article card (used until real photos exist).

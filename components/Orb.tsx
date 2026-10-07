@@ -1,4 +1,4 @@
-import s from "@/app/v2/v2.module.css";
+import s from "@/app/landing.module.css";
 
 /** Glowing AI-assistant orb, pure CSS. */
 export default function Orb({ size = 56 }: { size?: number }) {

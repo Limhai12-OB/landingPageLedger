@@ -1,24 +1,25 @@
 import type { Metadata } from "next";
+import { Inter_Tight } from "next/font/google";
+import { BRAND } from "@/data/content";
 import "./globals.css";
 
+const font = Inter_Tight({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-sans" });
+
 export const metadata: Metadata = {
-  title: "Sync — CRM platform to grow your business",
+  title: `${BRAND} — Bookkeeping, cash and planning for Cambodian retail`,
   description:
-    "A unique and powerful software suite to transform the way you work. Track projects, sync your apps and grow your company.",
+    "LedgerVision helps small retail businesses in Cambodia keep their books, understand their cash position and plan ahead, in Khmer or English and in USD or KHR.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-        />
-      </head>
-      <body>{children}</body>
+    // suppressHydrationWarning: the inline script below adds the `js` class before React hydrates.
+    <html lang="en" className={font.variable} suppressHydrationWarning>
+      <body>
+        {/* Mark JS as available before first paint so scroll-reveal content starts hidden without a flash. */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+        {children}
+      </body>
     </html>
   );
 }

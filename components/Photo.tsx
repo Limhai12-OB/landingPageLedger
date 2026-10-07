@@ -1,5 +1,5 @@
 import Image from "next/image";
-import s from "@/app/v2/v2.module.css";
+import s from "@/app/landing.module.css";
 
 const tones = [
   "linear-gradient(140deg, #e3e2ff 0%, #b7b6fe 55%, #5f59fc 100%)",
@@ -9,7 +9,7 @@ const tones = [
 ];
 
 /**
- * Photo slot. No photos are bundled: pass `src` (e.g. "/images/v2/article-1.jpg")
+ * Photo slot. No photos are bundled: pass `src` (e.g. "/images/article-1.jpg")
  * once you have real images; until then a soft tonal placeholder is shown.
  */
 export default function Photo({

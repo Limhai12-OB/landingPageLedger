@@ -1,7 +1,7 @@
-# Sync — CRM landing page (Next.js)
+# landingPageLedger
 
-Landing page for a fictional CRM product called **Sync**, built with the Next.js App Router and TypeScript.
-Everything is server-rendered, with no client JS beyond what Next ships. The marquee is pure CSS.
+Landing page for **LedgerVision**, bookkeeping, cash and planning for small retail businesses in Cambodia.
+Built with the Next.js App Router and TypeScript.
 
 ## Run it
 
@@ -11,65 +11,47 @@ npm run dev      # http://localhost:3000
 npm run build && npm start
 ```
 
+Don't run `npm run build` while `npm run dev` is running, because both write to `.next`.
+If pages lose their styles or show missing-file errors, stop the dev server, delete `.next`, and start it again.
+
 ## Structure
 
 ```
 app/
-  layout.tsx          fonts (Inter) + metadata
+  layout.tsx          Inter Tight font, metadata, early "js" flag for scroll-reveal
   page.tsx            section order
-  globals.css         all styling (tokens at the top, responsive rules at the bottom)
+  landing.module.css  all page styling, scoped (brand tokens at the top, responsive rules at the bottom)
+  globals.css         base reset + .avatar
 components/
-  Hero.tsx            headline, stats, black panel with tablet dashboard mock
-  Features.tsx        "New platform features" bento grid
-  SyncSection.tsx     dashed-line integration diagram (SVG paths generated from points)
-  Upgrade.tsx         photo slot + blue feature panel
-  Testimonials.tsx    3-column review cards
-  WhyUs.tsx           dune background, CTA buttons, scrolling gradient marquee
-  Footer.tsx
-  Icon.tsx, Logo.tsx, Ring.tsx, Chart.tsx, Avatar.tsx
-data/
-  testimonials.ts     placeholder reviews
-```
-
-## landing-page-v2 (`/v2`)
-
-A second, light/minimal design (orange accent, phone mockups) served at http://localhost:3000/v2.
-v1 stays at `/`.
-
-```
-app/v2/
-  layout.tsx          Inter Tight font + metadata
-  page.tsx            section order
-  v2.module.css       all v2 styling, scoped (tokens on .page, responsive rules at the bottom)
-components/v2/
-  Hero.tsx            nav + headline + tilted phone
-  Features.tsx        three feature rows with widgets (target, balance chart, AI)
-  Pricing.tsx         two plans
-  Showcase.tsx        three phone screens
-  Testimonials.tsx    quote carousel (the only client component)
-  Insights.tsx        article cards
-  Cta.tsx             CTA band + stats row
-  Footer.tsx
   Nav.tsx             sticky blurred top bar
-  LogoStrip.tsx       "trusted by" marquee
-  ArticleArt.tsx      illustrated article covers (swap for <Photo src=…> when you have photos)
+  Hero.tsx            headline, tilted phone, floating cards
+  LogoStrip.tsx       integrations marquee
+  Features.tsx        three feature rows with widgets (receipt capture, cash chart, AI advisor)
+  Pricing.tsx         "Roles" section: Branch Manager and Business Owner cards
+  Showcase.tsx        three phone screens
+  Testimonials.tsx    quote carousel with autoplay
+  Insights.tsx        guide cards
+  Cta.tsx             call-to-action band + stats row
+  Footer.tsx
+  Phone.tsx, LineChart.tsx, Orb.tsx, ArticleArt.tsx, Photo.tsx, Logo.tsx, SectionHead.tsx,
+  Icon.tsx, Avatar.tsx
   RevealObserver.tsx  scroll-reveal: adds data-shown to [data-reveal] elements in view
   CountUp.tsx         animated stats numbers
-  Phone.tsx, LineChart.tsx, Orb.tsx, Photo.tsx, Logo.tsx, SectionHead.tsx, motion.ts
-data/v2.ts            brand name, copy, plans, quotes, articles, stats, logo-strip names
+  motion.ts           delay() stagger helper
+data/
+  content.ts          brand name, nav, integrations, features, roles, quotes, guides, stats, footer
 ```
+
+Most copy lives in `data/content.ts`. Widget and phone-screen text is in the components.
 
 Animation: add `data-reveal` (optionally `="left" | "right" | "scale"`) plus `style={delay(i)}` to any element
 to fade it in on scroll. Everything is disabled under `prefers-reduced-motion`, and content stays visible without JS.
 
-v2 placeholders: the brand name (`BRAND` in `data/v2.ts`), sample quotes, demo stats, and photo slots.
-To use real photos, put them in `public/images/v2/` and pass `src` to `<Photo>`.
-
 ## Before you ship
 
-- **Testimonials are placeholders.** Replace `data/testimonials.ts` with real, attributable customer feedback.
-- **Stats** in the hero (80M+ users, 150+ countries) and the dashboard numbers are demo values. Swap in real figures.
-- **Photo slot** in `components/Upgrade.tsx` is an SVG placeholder. Drop an image in `public/images/` and use `next/image`.
-- **Integration icons** in the sync diagram are generic glyphs. Add official brand assets only if you have the right to use them.
+- **Testimonials are samples.** Replace the quotes in `data/content.ts` with real, attributable customer feedback.
+- **Numbers on the phone screens and widgets** ($48,920, 74-day runway, etc.) are example values.
+- **Integration names** (Shopify, WeBill365, ABA, Wing, ACLEDA, KHQR, Telegram, Google) appear as plain text
+  with generic icons. Confirm you're allowed to name them before launch, and add official logos only with permission.
+- **Article covers** are illustrations. For real photos, put them in `public/images/` and use `<Photo src="/images/...">`.
 - **Logo** is a simple placeholder mark; replace with your own.
-# landingPageLedger

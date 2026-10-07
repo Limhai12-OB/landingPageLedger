@@ -1,5 +1,5 @@
-import s from "@/app/v2/v2.module.css";
-import { navLinks } from "@/data/v2";
+import s from "@/app/landing.module.css";
+import { navLinks } from "@/data/content";
 import Logo from "./Logo";
 
 /** Sticky, translucent top bar. */

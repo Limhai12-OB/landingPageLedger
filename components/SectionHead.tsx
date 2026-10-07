@@ -1,4 +1,4 @@
-import s from "@/app/v2/v2.module.css";
+import s from "@/app/landing.module.css";
 import { delay } from "./motion";
 
 /** Badge + two-tone heading (second line muted) + optional intro. Fades up when scrolled into view. */

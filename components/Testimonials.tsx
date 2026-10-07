@@ -1,51 +1,71 @@
-import Avatar from "./Avatar";
-import { testimonials } from "@/data/testimonials";
+"use client";
 
-function Stars({ n }: { n: number }) {
-  return (
-    <span className="stars" role="img" aria-label={`${n} out of 5 stars`}>
-      {Array.from({ length: 5 }, (_, i) => (
-        <svg key={i} width="13" height="13" viewBox="0 0 24 24" aria-hidden="true">
-          <path
-            d="m12 2.8 2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4L2.8 9.5l6.4-.8z"
-            fill={i < n ? "#f6c24a" : "#e4e4ea"}
-          />
-        </svg>
-      ))}
-    </span>
-  );
-}
+import { useEffect, useState } from "react";
+import s from "@/app/landing.module.css";
+import Icon from "@/components/Icon";
+import Avatar from "@/components/Avatar";
+import { quotes } from "@/data/content";
+
+const AUTOPLAY_MS = 6000;
 
 export default function Testimonials() {
-  const cols = [0, 1, 2].map((c) => testimonials.filter((t) => t.column === c));
-  return (
-    <section className="reviews container" id="reviews">
-      <h2 className="section-title center">
-        What our client say
-        <br />
-        about us
-      </h2>
-      <p className="placeholder-note">Sample content — replace with real customer reviews.</p>
+  const [i, setI] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const q = quotes[i];
+  const go = (d: number) => setI((n) => (n + d + quotes.length) % quotes.length);
 
-      <div className="reviews-grid">
-        {cols.map((col, ci) => (
-          <div className="reviews-col" key={ci}>
-            {col.map((t, i) => (
-              <figure className="review" key={t.name}>
-                <figcaption>
-                  <Avatar name={t.name.replace("Sample ", "")} size={32} tone={ci + i} />
-                  <span>
-                    <b>{t.name}</b>
-                    <Stars n={t.rating} />
-                  </span>
-                </figcaption>
-                <blockquote>{t.text}</blockquote>
-                <time>{t.date}</time>
-              </figure>
-            ))}
-          </div>
+  useEffect(() => {
+    if (paused || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const t = setTimeout(() => setI((n) => (n + 1) % quotes.length), AUTOPLAY_MS);
+    return () => clearTimeout(t);
+  }, [i, paused]);
+
+  return (
+    <section
+      className={`${s.quoteWrap} ${s.container}`}
+      aria-roledescription="carousel"
+      aria-label="Customer quotes"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocus={() => setPaused(true)}
+      onBlur={() => setPaused(false)}
+      data-reveal=""
+    >
+      <div className={s.quote}>
+        <button type="button" className={s.arrow} onClick={() => go(-1)} aria-label="Previous quote">
+          <Icon name="arrowLeft" size={16} />
+        </button>
+
+        <figure key={i} className={s.quoteBody} aria-live="polite">
+          <Avatar name={q.name.replace("Sample ", "S ")} size={56} tone={i} />
+          <blockquote>“{q.text}”</blockquote>
+          <figcaption>
+            <b>{q.name}</b>
+            <small>{q.role}</small>
+          </figcaption>
+        </figure>
+
+        <button type="button" className={s.arrow} onClick={() => go(1)} aria-label="Next quote">
+          <Icon name="arrowRight" size={16} />
+        </button>
+      </div>
+
+      <div className={s.dots} role="tablist" aria-label="Choose quote">
+        {quotes.map((_, n) => (
+          <button
+            key={n}
+            type="button"
+            role="tab"
+            aria-selected={n === i}
+            aria-label={`Quote ${n + 1}`}
+            className={n === i ? s.dotOn : undefined}
+            onClick={() => setI(n)}
+          >
+            {n === i && !paused && <i key={i} style={{ animationDuration: `${AUTOPLAY_MS}ms` }} />}
+          </button>
         ))}
       </div>
+      <p className={s.placeholderNote}>Sample quotes: replace with real customer feedback.</p>
     </section>
   );
 }

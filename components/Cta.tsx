@@ -1,7 +1,7 @@
-import s from "@/app/v2/v2.module.css";
+import s from "@/app/landing.module.css";
 import Icon from "@/components/Icon";
 import Avatar from "@/components/Avatar";
-import { stats } from "@/data/v2";
+import { stats } from "@/data/content";
 import CountUp from "./CountUp";
 import { delay } from "./motion";
 
@@ -22,7 +22,7 @@ export default function Cta() {
           <Icon name="chart" size={24} />
         </span>
         <span className={`${s.floatChip} ${s.ft3}`}>
-          <span className={s.up}>▲ 18%</span> revenue
+          <span className={s.up}>✓</span> Telegram alert sent
         </span>
         <span className={`${s.floatChip} ${s.ft4}`}>
           <span className={s.avatarStack}>
@@ -30,7 +30,7 @@ export default function Cta() {
               <Avatar key={n} name={n} size={22} tone={i} />
             ))}
           </span>
-          +2k this week
+          Branch team synced
         </span>
         <span className={`${s.floatTile} ${s.ft5}`}>
           <Icon name="wallet" size={22} />
@@ -39,20 +39,20 @@ export default function Cta() {
 
       <div className={s.ctaCopy}>
         <h2 id="cta-title" className={s.ctaTitle} data-reveal="">
-          Let&apos;s grow with confidence,
+          Know your numbers,
           <br />
-          <span className={s.mutedText}>backed by real insights</span>
+          <span className={s.mutedText}>plan your next move</span>
         </h2>
         <p className={s.intro} data-reveal="" style={delay(1)}>
-          Track performance, understand your cash flow, and make every decision with clarity at every stage of your
-          business.
+          Set up your business in minutes, invite your branch managers, and see your books, cash and forecast in
+          one place.
         </p>
         <div className={s.heroActions} data-reveal="" style={delay(2)}>
           <a href="#pricing" className={`${s.btn} ${s.btnDark}`}>
             Get Started <Icon name="arrowRight" size={15} />
           </a>
           <a href="#features" className={`${s.btn} ${s.btnLight}`}>
-            Talk to sales
+            Book a demo
           </a>
         </div>
       </div>

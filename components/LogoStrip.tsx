@@ -1,12 +1,12 @@
-import s from "@/app/v2/v2.module.css";
+import s from "@/app/landing.module.css";
 import Icon from "@/components/Icon";
-import { logos } from "@/data/v2";
+import { logos } from "@/data/content";
 
-/** Endless "trusted by" marquee. The list is rendered twice so the loop is seamless. */
+/** Endless integrations marquee. The list is rendered twice so the loop is seamless. */
 export default function LogoStrip() {
   return (
-    <section className={s.logoStrip} aria-label="Trusted by">
-      <p>Trusted by fast-growing teams everywhere</p>
+    <section className={s.logoStrip} aria-label="Integrations">
+      <p>Connects with the banks, wallets and tools you already use</p>
       <div className={s.marquee}>
         <div className={s.marqueeTrack}>
           {[0, 1].map((copy) => (

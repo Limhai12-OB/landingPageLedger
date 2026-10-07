@@ -1,48 +1,49 @@
-const nav = [
-  ["Price", "#pricing"],
-  ["About us", "#about"],
-  ["Contacts", "#contacts"],
-  ["Features", "#features"],
-  ["Sync", "#sync"],
-  ["Reviews", "#reviews"],
-] as const;
-
-const legal = ["Terms & Conditions", "Privacy Statement", "Cookies", "Trademarks"];
+import s from "@/app/landing.module.css";
+import Icon from "@/components/Icon";
+import { BRAND, footerCols } from "@/data/content";
+import Logo from "./Logo";
 
 export default function Footer() {
   return (
-    <footer className="footer" id="contacts">
-      <nav className="footer-nav container" aria-label="Footer">
-        {nav.map(([label, href]) => (
-          <a key={label} href={href}>
-            {label}
-          </a>
-        ))}
-      </nav>
-
-      <div className="footer-bar container">
-        <small>© {new Date().getFullYear()} All Rights Reserved.</small>
-        <ul>
-          {legal.map((l) => (
-            <li key={l}>
-              <a href="#">{l}</a>
-            </li>
-          ))}
-        </ul>
-        <div className="social">
-          <a href="#" aria-label="LinkedIn">
-            <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
-              <rect x="2" y="2" width="20" height="20" rx="3" fill="currentColor" />
-              <path d="M7 10v7M7 7v.01M11 17v-7m0 3c0-2 5-3 5 0v4" stroke="#000" strokeWidth="2" fill="none" strokeLinecap="round" />
-            </svg>
-          </a>
-          <a href="#" aria-label="Social">
-            <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M4 4l16 16M20 4 4 20" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
-            </svg>
-          </a>
+    <footer className={s.footer}>
+      <div className={`${s.footerGrid} ${s.container}`}>
+        <div className={s.footerBrand}>
+          <Logo />
+          <p>Bookkeeping, cash and planning for small retail businesses in Cambodia, in Khmer or English.</p>
+          <div className={s.social}>
+            <a href="#" aria-label="Photos">
+              <Icon name="camera" size={15} />
+            </a>
+            <a href="#" aria-label="Email">
+              <Icon name="at" size={15} />
+            </a>
+            <a href="#" aria-label="Share">
+              <Icon name="share" size={15} />
+            </a>
+          </div>
         </div>
+        {footerCols.map((c) => (
+          <nav key={c.title} aria-label={c.title} className={s.footerCol}>
+            <h4>{c.title}</h4>
+            <ul>
+              {c.items.map((it) => (
+                <li key={it}>
+                  <a href="#">{it}</a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        ))}
       </div>
+      <div className={`${s.copy} ${s.container}`}>
+        <span>© {new Date().getFullYear()} Copyright {BRAND}. All rights reserved.</span>
+        <a href="#top">
+          Back to top <Icon name="arrowUpRight" size={13} />
+        </a>
+      </div>
+      <p className={s.bigWord} aria-hidden="true">
+        {BRAND}
+      </p>
     </footer>
   );
 }

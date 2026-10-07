@@ -1,5 +1,5 @@
 import { useId } from "react";
-import s from "@/app/v2/v2.module.css";
+import s from "@/app/landing.module.css";
 
 /** Two-series line chart (brand = income, soft = last period). Coordinates on a 300×120 grid. Draws itself when revealed. */
 const income = [96, 90, 92, 78, 82, 70, 64, 68, 50, 46, 34, 28];

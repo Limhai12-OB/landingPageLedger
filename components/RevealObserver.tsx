@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 /**
  * Adds `data-shown` to every `[data-reveal]` element once it scrolls into view.
- * CSS (v2.module.css) only hides those elements when <html> has the `js` class,
+ * CSS (landing.module.css) only hides those elements when <html> has the `js` class,
  * so content stays visible if scripts are disabled.
  */
 export default function RevealObserver() {

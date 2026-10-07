@@ -1,21 +1,34 @@
+import s from "./landing.module.css";
+import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
+import LogoStrip from "@/components/LogoStrip";
 import Features from "@/components/Features";
-import SyncSection from "@/components/SyncSection";
-import Upgrade from "@/components/Upgrade";
+import Pricing from "@/components/Pricing";
+import Showcase from "@/components/Showcase";
 import Testimonials from "@/components/Testimonials";
-import WhyUs from "@/components/WhyUs";
+import Insights from "@/components/Insights";
+import Cta from "@/components/Cta";
 import Footer from "@/components/Footer";
+import RevealObserver from "@/components/RevealObserver";
 
-export default function Home() {
+export default function LandingV2() {
   return (
-    <main>
-      <Hero />
-      <Features />
-      <SyncSection />
-      <Upgrade />
-      <Testimonials />
-      <WhyUs />
+    <div className={s.page}>
+      <Nav />
+      <main>
+        <Hero />
+        <LogoStrip />
+        <Features />
+        <Pricing />
+        <Showcase />
+        <Testimonials />
+        <div className={s.tint}>
+          <Insights />
+          <Cta />
+        </div>
+      </main>
       <Footer />
-    </main>
+      <RevealObserver />
+    </div>
   );
 }
