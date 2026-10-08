@@ -44,10 +44,10 @@ export const posSales = [
   { name: "Morning shift · Riverside", when: "Yesterday 06:00–14:00", items: 157, amount: "$640.00" },
 ];
 export const payMethods = [
-  { name: "KHQR", pct: 38, color: "#1d33ba" },
-  { name: "Cash", pct: 31, color: "#4c62dc" },
-  { name: "ABA transfer", pct: 19, color: "#8e9cf0" },
-  { name: "Wing", pct: 12, color: "#c7d0fb" },
+  { name: "KHQR", pct: 38, color: "#1e40af" },
+  { name: "Cash", pct: 31, color: "#3b5ed9" },
+  { name: "ABA transfer", pct: 19, color: "#93a9f0" },
+  { name: "Wing", pct: 12, color: "#c7d2fb" },
 ];
 
 /* ---------- Till & reconciliation ---------- */
