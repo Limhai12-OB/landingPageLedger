@@ -2,10 +2,10 @@ import Image from "next/image";
 import s from "@/app/landing.module.css";
 
 const tones = [
-  "linear-gradient(140deg, #eef1ff 0%, #c7d0fb 55%, #4c62dc 100%)",
-  "linear-gradient(140deg, #eef1ff 0%, #8e9cf0 55%, #172a96 100%)",
-  "linear-gradient(140deg, #eef1ff 0%, #4c62dc 55%, #4c62dc 100%)",
-  "linear-gradient(140deg, #f5f7ff 0%, #c7d0fb 55%, #1d33ba 100%)",
+  "linear-gradient(140deg, #e8edfc 0%, #c7d2fb 55%, #3b5ed9 100%)",
+  "linear-gradient(140deg, #e8edfc 0%, #93a9f0 55%, #1e3a8a 100%)",
+  "linear-gradient(140deg, #e8edfc 0%, #3b5ed9 55%, #3b5ed9 100%)",
+  "linear-gradient(140deg, #f0f3fd 0%, #c7d2fb 55%, #1e40af 100%)",
 ];
 
 /**

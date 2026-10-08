@@ -97,7 +97,7 @@ export default function ForecastChart({ whatIf, safety = forecast.safety }: { wh
           <title id={`${id}-title`}>{`Cash forecast through day ${lastDay}`}</title>
           <desc id={`${id}-desc`}>{`Expected cash starts at ${money(expected[0])}, reaches a low of ${money(low)}, and ends at ${money(expected[n - 1])}. The shaded range shows best and worst scenarios. Safety level: ${money(safety)}. Use the slider below to explore every data point.`}</desc>
           <defs>
-            <linearGradient id={`${id}-area`} x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#1D33BA" stopOpacity=".16" /><stop offset="100%" stopColor="#1D33BA" stopOpacity="0" /></linearGradient>
+            <linearGradient id={`${id}-area`} x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#0D9488" stopOpacity=".16" /><stop offset="100%" stopColor="#0D9488" stopOpacity="0" /></linearGradient>
           </defs>
           {ticks.map((v) => <g key={v}><line className={s.forecastGrid} x1={L} x2={W - R} y1={y(v)} y2={y(v)} /><text className={s.forecastAxis} x={L - 12} y={y(v) + 4} textAnchor="end">{fmt(v)}</text></g>)}
           <polygon className={s.forecastEnvelope} points={[...pts(upper), ...pts(lower).reverse()].join(" ")} />
@@ -107,8 +107,8 @@ export default function ForecastChart({ whatIf, safety = forecast.safety }: { wh
           <path className={s.forecastLine} d={line(expected)} />
           {crunchIdx !== -1 && <g><circle cx={x(crunchIdx)} cy={y(expected[crunchIdx])} r="9" fill="#DC2626" fillOpacity=".12" /><circle cx={x(crunchIdx)} cy={y(expected[crunchIdx])} r="4" fill="#FFFFFF" stroke="#DC2626" strokeWidth="2" /></g>}
           <line className={s.forecastCursor} x1={x(active)} x2={x(active)} y1={T} y2={H - B} />
-          <circle cx={x(active)} cy={y(expected[active])} r="9" fill="#1D33BA" fillOpacity=".12" />
-          <circle cx={x(active)} cy={y(expected[active])} r="4.5" fill="#FFFFFF" stroke="#1D33BA" strokeWidth="2.5" />
+          <circle cx={x(active)} cy={y(expected[active])} r="9" fill="#0D9488" fillOpacity=".12" />
+          <circle cx={x(active)} cy={y(expected[active])} r="4.5" fill="#FFFFFF" stroke="#0D9488" strokeWidth="2.5" />
           {dayTicks.map((i) => <text key={i} className={s.forecastAxis} x={x(i)} y={H - 10} textAnchor={i === 0 ? "start" : i === n - 1 ? "end" : "middle"}>{i === 0 ? "Today" : `Day ${i * DAYS_PER_POINT}`}</text>)}
         </svg>
       </div>

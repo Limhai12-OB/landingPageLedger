@@ -7,3 +7,4 @@ next-env.d.ts
 
 # Isolated development output (one directory per port)
 .next-dev/
+config.bat

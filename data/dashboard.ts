@@ -66,9 +66,9 @@ export const expenses = {
   total: "$3,040",
   period: "This month",
   items: [
-    { name: "Inventory restock", value: "$1,420", pct: 47, color: "#1d33ba" },
-    { name: "Rent & utilities", value: "$980", pct: 32, color: "#4c62dc" },
-    { name: "Wages", value: "$640", pct: 21, color: "#c7d0fb" },
+    { name: "Inventory restock", value: "$1,420", pct: 47, color: "#1e40af" },
+    { name: "Rent & utilities", value: "$980", pct: 32, color: "#3b5ed9" },
+    { name: "Wages", value: "$640", pct: 21, color: "#c7d2fb" },
   ],
 };
 

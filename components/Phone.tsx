@@ -6,9 +6,9 @@ import Orb from "./Orb";
 export type Screen = "overview" | "balance" | "assistant";
 
 const activity: { name: string; when: string; amount: string; up: boolean; icon: IconName; bg: string }[] = [
-  { name: "ABA payment · INV-208", when: "Today, 10:24", amount: "+$1,240", up: true, icon: "bag", bg: "#4c62dc" },
-  { name: "Supplier bill · Rice", when: "Today, 08:10", amount: "-៛344K", up: false, icon: "coffee", bg: "#8e9cf0" },
-  { name: "Shopify orders", when: "Yesterday", amount: "+$3,500", up: true, icon: "wallet", bg: "#1d33ba" },
+  { name: "ABA payment · INV-208", when: "Today, 10:24", amount: "+$1,240", up: true, icon: "bag", bg: "#3b5ed9" },
+  { name: "Supplier bill · Rice", when: "Today, 08:10", amount: "-៛344K", up: false, icon: "coffee", bg: "#93a9f0" },
+  { name: "Shopify orders", when: "Yesterday", amount: "+$3,500", up: true, icon: "wallet", bg: "#1e40af" },
   { name: "Shop rent", when: "Mon, 14:02", amount: "-$240", up: false, icon: "users", bg: "#8a8f98" },
 ];
 
